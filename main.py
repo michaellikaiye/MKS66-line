@@ -31,7 +31,7 @@ screen = new_screen()
 # draw_theta(math.pi/3, screen, white)
 # draw_theta(-math.pi/3, screen, white)
 
-for i in range(1, 256):
+for i in range(256):
     d = 2 * math.pi * i / 256
     c = [i, (85 + i) % 256, (170 + i) % 256]
     draw_theta(d, screen, c)
