@@ -17,26 +17,18 @@ def dont(x, y):
 
 def draw_line(x0, y0, x1, y1, screen, color):
     # setup
-    if x1 > x0:
-        s0 = x0
-        t0 = y0
-        s1 = x1
-        t1 = y1
+    if x1 < x0:
     # 3rd, 4th, 5th, 6th octants
-    else:
-        s0 = x1
-        t0 = y1
-        s1 = x0
-        t1 = y0
-    x = s0
-    y = t0
-    A = (t1 - t0)
-    B = -(s1 - s0)
+        x0, y0, x1, y1 = x1, y1, x0, y0
+    x = x0
+    y = y0
+    A = (y1 - y0)
+    B = -(x1 - x0)
     # 0 <= -B always true
     # 1st octant
     if 0 <= A and A <= -B:
         d = 2 * A + B
-        while x <= s1:
+        while x <= x1:
             if dont(x, y) == 0:
                 plot(screen, color, x, y)
             x += 1
@@ -47,7 +39,7 @@ def draw_line(x0, y0, x1, y1, screen, color):
     # 2nd octant
     elif 0 <= A and -B <= A:
         d = A + 2 * B
-        while y <= t1:
+        while y <= y1:
             if dont(x, y) == 0:
                 plot(screen, color, x, y)
             y += 1
@@ -58,7 +50,7 @@ def draw_line(x0, y0, x1, y1, screen, color):
     # 7th octant
     elif A <= 0 and A <= B:
         d = A + -2 * B
-        while y >= t1:
+        while y >= y1:
             if dont(x, y) == 0:
                 plot(screen, color, x, y)
             y += -1
@@ -69,7 +61,7 @@ def draw_line(x0, y0, x1, y1, screen, color):
     # 8th octant
     elif A <= 0 and B <= A:
         d = 2 * A + -B
-        while x <= s1:
+        while x <= x1:
             if dont(x, y) == 0:
                 plot(screen, color, x, y)
             x += 1
