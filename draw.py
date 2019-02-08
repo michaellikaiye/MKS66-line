@@ -2,7 +2,6 @@ import math
 from display import *
 
 size = 500
-radius = 100
 xc = 250
 yc = 250
 
@@ -70,12 +69,12 @@ def draw_line(x0, y0, x1, y1, screen, color):
                 y += -1
                 d += -2 * B
     else:
-        print("invalid\n")
-
+        #print("invalid\n")
+        return
 
 def draw_function(A, B, C, screen, color):
     if A == 0 and B == 0:
-        print("no line\n")
+        #print("no line\n")
         return
     if A == 0:
         b = int(-C / B)
@@ -95,7 +94,7 @@ def draw_function(A, B, C, screen, color):
     draw_line(x0, y0, x1, y1, screen, color)
 
 
-def draw_theta(d, screen, color):
+def draw_theta(d, radius, screen, color):
     if d == math.pi:
         draw_function(1, 0, -(xc - radius), screen, color)
         return

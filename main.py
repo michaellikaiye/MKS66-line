@@ -3,6 +3,15 @@ from draw import *
 
 screen = new_screen()
 
+for i in range(256):
+    d = 2 * math.pi * i / 256
+    c = [i, i, i]
+    draw_theta(d, i, screen, c)
+for i in range(256):
+    d = math.pi + 2 * math.pi * i / 256
+    c = [i, 0, 0]
+    draw_theta(d, i, screen, c)
+
 # TESTING
 
 # white = [255, 255, 255]
@@ -30,11 +39,6 @@ screen = new_screen()
 # draw_theta(math.pi, screen, white)
 # draw_theta(math.pi/3, screen, white)
 # draw_theta(-math.pi/3, screen, white)
-
-for i in range(256):
-    d = 2 * math.pi * i / 256
-    c = [i, (85 + i) % 256, (170 + i) % 256]
-    draw_theta(d, screen, c)
 
 display(screen)
 save_extension(screen, 'img.png')
